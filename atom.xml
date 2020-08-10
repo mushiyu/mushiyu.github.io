@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-09T14:02:41.757Z</updated>
+  <updated>2020-08-10T03:23:13.843Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第四届蓝帽杯线上赛部分wp</title>
+    <link href="http://yoursite.com/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/"/>
+    <id>http://yoursite.com/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/</id>
+    <published>2020-08-10T02:28:11.000Z</published>
+    <updated>2020-08-10T03:23:13.843Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp&quot;&gt;&lt;a href=&quot;#第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>new page</title>
     <link href="http://yoursite.com/binary/new-page/"/>
     <id>http://yoursite.com/binary/new-page/</id>
     <published>2020-08-09T13:11:53.000Z</published>
-    <updated>2020-08-09T14:02:41.757Z</updated>
+    <updated>2020-08-10T02:30:22.033Z</updated>
     
     <summary type="html">
     
