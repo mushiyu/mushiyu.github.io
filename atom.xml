@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-04T08:59:21.489Z</updated>
+  <updated>2020-10-27T11:00:31.048Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019]EasySQL</title>
+    <link href="http://yoursite.com/uncategorized/2019-easysql/"/>
+    <id>http://yoursite.com/uncategorized/2019-easysql/</id>
+    <published>2020-10-27T02:22:43.000Z</published>
+    <updated>2020-10-27T11:00:31.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;堆叠注入&quot;&gt;&lt;a href=&quot;#堆叠注入&quot; class=&quot;headerlink&quot; title=&quot;堆叠注入&quot;&gt;&lt;/a&gt;堆叠注入&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 &lt;code&gt;query&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>DC靶场</title>

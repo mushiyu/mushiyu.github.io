@@ -135,6 +135,47 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/uncategorized/2019-easysql/" target="_self">
+          <img src="/img/4.jpg" alt="2019]EasySQL">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a class="index-header" href="/uncategorized/2019-easysql/">2019]EasySQL</a>
+
+      <a href="/uncategorized/2019-easysql/" class="index-excerpt">
+        
+        
+          
+        
+        <div>堆叠注入
+这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 query 长度不超过 40
+
+关键的查询代码是 select $post[&#39;query&#39;]||flag from Flag
+
+这里要想办法使得||变为字符串连接操作符，来拼接sql命令
+
+
+
+PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-10-27
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/shen-tou-ce-shi/dc-ba-chang/" target="_self">
           <img src="/img/3.jpg" alt="DC靶场">
         </a>

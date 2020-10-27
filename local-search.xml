@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>2019]EasySQL</title>
+    <link href="/uncategorized/2019-easysql/"/>
+    <url>/uncategorized/2019-easysql/</url>
+    
+    <content type="html"><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul><li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p></li><li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p></li><li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p><p><a href="http://39.96.76.44:8080/image/1wW" target="_blank" rel="noopener"><img src="http://39.96.76.44:8080/images/2020/10/27/3a4a788689cc9bffc5b81866a19b218a.png" srcset="/img/loading.gif" alt="3a4a788689cc9bffc5b81866a19b218a.png"></a></p></li></ul><h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p><p>1.sql_mode不为PIPES_AS_CONCAT</p><p><a href="http://39.96.76.44:8080/image/9YD" target="_blank" rel="noopener"><img src="http://39.96.76.44:8080/images/2020/10/27/e9593f98776a36c36217fef096c89d9f.png" srcset="/img/loading.gif" alt="e9593f98776a36c36217fef096c89d9f.png"></a></p><p>1.sql_mode为PIPES_AS_CONCAT</p><p><img src="http://39.96.76.44:8080/images/2020/10/27/f5c5eabd5ee52ed79685b26f5fd01c43.png" srcset="/img/loading.gif" alt="f5c5eabd5ee52ed79685b26f5fd01c43.png"></p><ul><li>关于非预期解 : <code>*,1</code></li><li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li><li>等同于 <code>select *,1 from Flag</code></li></ul><p><img src="http://39.96.76.44:8080/images/2020/10/27/42e9dfad5d55803fbd0c3c603f3c1db3.png" srcset="/img/loading.gif" alt="42e9dfad5d55803fbd0c3c603f3c1db3.png"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>DC靶场</title>
     <link href="/shen-tou-ce-shi/dc-ba-chang/"/>
     <url>/shen-tou-ce-shi/dc-ba-chang/</url>
