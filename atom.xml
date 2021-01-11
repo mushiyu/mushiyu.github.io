@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-11T11:23:12.766Z</updated>
+  <updated>2021-01-11T12:29:22.257Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>buu-misc</title>
+    <link href="http://yoursite.com/ctf/buu-misc/"/>
+    <id>http://yoursite.com/ctf/buu-misc/</id>
+    <published>2021-01-11T11:55:15.000Z</published>
+    <updated>2021-01-11T12:29:22.257Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;V-amp-N-2020-公开赛-MISC内存取证&quot;&gt;&lt;a href=&quot;#V-amp-N-2020-公开赛-MISC内存取证&quot; class=&quot;headerlink&quot; title=&quot;V&amp;amp;N 2020 公开赛-MISC内存取证&quot;&gt;&lt;/a&gt;V&amp;amp;N
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2019]EasySQL</title>
-    <link href="http://yoursite.com/uncategorized/2019-easysql/"/>
-    <id>http://yoursite.com/uncategorized/2019-easysql/</id>
+    <link href="http://yoursite.com/ctf/2019-easysql/"/>
+    <id>http://yoursite.com/ctf/2019-easysql/</id>
     <published>2020-10-27T02:22:43.000Z</published>
-    <updated>2021-01-11T11:23:12.766Z</updated>
+    <updated>2021-01-11T11:57:22.544Z</updated>
     
     <summary type="html">
     
@@ -36,6 +61,8 @@
     
     </summary>
     
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
     
     
   </entry>
