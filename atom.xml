@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-11T12:29:22.257Z</updated>
+  <updated>2021-01-12T10:40:51.360Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTFd的搭建部署</title>
+    <link href="http://yoursite.com/docker/ctfd/ctfd-de-da-jian-bu-shu/"/>
+    <id>http://yoursite.com/docker/ctfd/ctfd-de-da-jian-bu-shu/</id>
+    <published>2021-01-12T06:48:03.000Z</published>
+    <updated>2021-01-12T10:40:51.360Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/categories/docker/"/>
+    
+      <category term="CTFd" scheme="http://yoursite.com/categories/docker/CTFd/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>buu-misc</title>

