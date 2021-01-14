@@ -3,7 +3,7 @@
   <entry>
     <title>CTFd的搭建部署</title>
     <url>/docker/ctfd/ctfd-de-da-jian-bu-shu/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近把博客图床迁移到了gitee，然后服务器腾了出来，鼓捣一下CTFd平台的搭建</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近把博客图床迁移到了gitee，然后服务器腾了出来，鼓捣一下CTFd平台的搭建</p>
 <p>本文从服务器安全组配置入手，然后docker安装，从0进行</p>
 <h2 id="一、服务器安全组配置"><a href="#一、服务器安全组配置" class="headerlink" title="一、服务器安全组配置"></a>一、服务器安全组配置</h2><p>我选择的是ubuntu 18.04位，阿里云，安全组配置如下</p>
 <p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112145523.png" srcset="/img/loading.gif" alt=""></p>
@@ -57,11 +57,17 @@ flask-restplus==0.13.0
 ...</code></pre><p>然后 <code>docker-compose down</code> 再启动 <code>docker-compose up -d --build</code> 不出意外应该就能解决问题</p>
 <p>启动完毕，打开 <a href="http://ip:8000" target="_blank" rel="noopener">http://ip:8000</a> 安装 CTFd</p>
 <p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
-<p>四、优化方面：</p>
-<blockquote>
+<h2 id="四、优化方面："><a href="#四、优化方面：" class="headerlink" title="四、优化方面："></a>四、优化方面：</h2><blockquote>
 <p><a href="https://blog.csdn.net/weixin_43880435/article/details/107339592" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43880435/article/details/107339592</a></p>
 </blockquote>
 <p>修改css，加快渲染速度</p>
+<p>添加邮箱设置如下：</p>
+<img src="https://gitee.com/mushiyu/img/raw/master/img/20210114202407.png" srcset="/img/loading.gif" style="zoom:67%;" />
+
+<img src="https://gitee.com/mushiyu/img/raw/master/img/20210114202321.png" srcset="/img/loading.gif" style="zoom:67%;" />
+
+
+
 <h2 id="四、自己瞎记的一些docker命令"><a href="#四、自己瞎记的一些docker命令" class="headerlink" title="四、自己瞎记的一些docker命令"></a>四、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
 <pre class=" language-shell"><code class="language-shell">docker rm `docker ps -a -q`        //docker删除所有容器
 
@@ -76,6 +82,49 @@ docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
       <categories>
         <category>docker</category>
         <category>CTFd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2019]EasySQL</title>
+    <url>/ctf/2019-easysql/</url>
+    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
+<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
+</li>
+<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
+</li>
+<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
+<p>1.sql_mode不为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
+<p>1.sql_mode为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>关于非预期解 : <code>*,1</code></li>
+<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
+<li>等同于 <code>select *,1 from Flag</code></li>
+</ul>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>ctf</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>new page</title>
+    <url>/binary/new-page/</url>
+    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
+<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
+<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
+<p>以后要慢慢开始记录自己学习成长的经历了</p>
+<p>也感谢一直陪在我身边鼓励我的朋友们</p>
+<p>Fighting！！</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192420.jpg" srcset="/img/loading.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>binary</category>
       </categories>
   </entry>
   <entry>
@@ -171,49 +220,6 @@ find / -user root -perm -4000 -exec ls -ldb { }</code></pre><h4 id="find"><a hre
 ]]></content>
       <categories>
         <category>渗透测试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2019]EasySQL</title>
-    <url>/ctf/2019-easysql/</url>
-    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
-<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
-</li>
-<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
-</li>
-<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
-</li>
-</ul>
-<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
-<p>1.sql_mode不为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
-<p>1.sql_mode为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>关于非预期解 : <code>*,1</code></li>
-<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
-<li>等同于 <code>select *,1 from Flag</code></li>
-</ul>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>ctf</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>new page</title>
-    <url>/binary/new-page/</url>
-    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
-<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
-<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
-<p>以后要慢慢开始记录自己学习成长的经历了</p>
-<p>也感谢一直陪在我身边鼓励我的朋友们</p>
-<p>Fighting！！</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192420.jpg" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>binary</category>
       </categories>
   </entry>
   <entry>

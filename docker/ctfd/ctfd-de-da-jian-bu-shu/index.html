@@ -128,7 +128,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      675 字
+      683 字
     </span>
   
 
@@ -169,7 +169,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近把博客图床迁移到了gitee，然后服务器腾了出来，鼓捣一下CTFd平台的搭建</p>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近把博客图床迁移到了gitee，然后服务器腾了出来，鼓捣一下CTFd平台的搭建</p>
 <p>本文从服务器安全组配置入手，然后docker安装，从0进行</p>
 <h2 id="一、服务器安全组配置"><a href="#一、服务器安全组配置" class="headerlink" title="一、服务器安全组配置"></a>一、服务器安全组配置</h2><p>我选择的是ubuntu 18.04位，阿里云，安全组配置如下</p>
 <p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210112145523.png" srcset="/img/loading.gif" alt=""></p>
@@ -223,11 +223,17 @@ flask-restplus==0.13.0
 ...</code></pre><p>然后 <code>docker-compose down</code> 再启动 <code>docker-compose up -d --build</code> 不出意外应该就能解决问题</p>
 <p>启动完毕，打开 <a href="http://ip:8000" target="_blank" rel="noopener">http://ip:8000</a> 安装 CTFd</p>
 <p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
-<p>四、优化方面：</p>
-<blockquote>
+<h2 id="四、优化方面："><a href="#四、优化方面：" class="headerlink" title="四、优化方面："></a>四、优化方面：</h2><blockquote>
 <p><a href="https://blog.csdn.net/weixin_43880435/article/details/107339592" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43880435/article/details/107339592</a></p>
 </blockquote>
 <p>修改css，加快渲染速度</p>
+<p>添加邮箱设置如下：</p>
+<img src="https://gitee.com/mushiyu/img/raw/master/img/20210114202407.png" srcset="/img/loading.gif" style="zoom:67%;" />
+
+<img src="https://gitee.com/mushiyu/img/raw/master/img/20210114202321.png" srcset="/img/loading.gif" style="zoom:67%;" />
+
+
+
 <h2 id="四、自己瞎记的一些docker命令"><a href="#四、自己瞎记的一些docker命令" class="headerlink" title="四、自己瞎记的一些docker命令"></a>四、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
 <pre class=" language-shell"><code class="language-shell">docker rm `docker ps -a -q`        //docker删除所有容器
 
