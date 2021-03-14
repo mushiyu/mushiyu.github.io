@@ -128,7 +128,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      683 字
+      748 字
     </span>
   
 
@@ -138,7 +138,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      10
        分钟
     </span>
   
@@ -234,15 +234,34 @@ flask-restplus==0.13.0
 
 
 
-<h2 id="四、自己瞎记的一些docker命令"><a href="#四、自己瞎记的一些docker命令" class="headerlink" title="四、自己瞎记的一些docker命令"></a>四、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
+<h2 id="五、自己瞎记的一些docker命令"><a href="#五、自己瞎记的一些docker命令" class="headerlink" title="五、自己瞎记的一些docker命令"></a>五、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
 <pre class=" language-shell"><code class="language-shell">docker rm `docker ps -a -q`        //docker删除所有容器
 
 docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
-<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><blockquote>
+<h2 id="六、nginx-80端口与frps中vhost端口冲突解决方案"><a href="#六、nginx-80端口与frps中vhost端口冲突解决方案" class="headerlink" title="六、nginx 80端口与frps中vhost端口冲突解决方案"></a>六、nginx 80端口与frps中vhost端口冲突解决方案</h2><p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306231104.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230729.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230801.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230850.png" srcset="/img/loading.gif" alt=""></p>
+<p>nginx配置如下：</p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">80</span><span class="token punctuation">;</span>
+    <span class="token keyword">server_name</span> <span class="token operator">*</span><span class="token punctuation">.</span>test<span class="token punctuation">.</span>sipcoj<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">#   return 301 https://$host$request_uri;</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">:</span><span class="token number">1234</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_redirect</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token variable">$host</span><span class="token operator">/</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token variable">$http_host</span><span class="token operator">/</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Forwarded<span class="token operator">-</span>For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><blockquote>
 <p>参考博客：</p>
 <p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
 <p><a href="https://hujiekang.top/2020/04/26/CTFd-conf/" target="_blank" rel="noopener">https://hujiekang.top/2020/04/26/CTFd-conf/</a></p>
 <p><a href="https://err0r.top/article/CTFD/" target="_blank" rel="noopener">https://err0r.top/article/CTFD/</a></p>
+<p><a href="https://www.ioiox.com/archives/98.html" target="_blank" rel="noopener">https://www.ioiox.com/archives/98.html</a></p>
 </blockquote>
 
             </article>
@@ -266,6 +285,12 @@ docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/git/git-ming-ling/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">

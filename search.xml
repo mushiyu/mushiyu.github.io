@@ -68,63 +68,39 @@ flask-restplus==0.13.0
 
 
 
-<h2 id="四、自己瞎记的一些docker命令"><a href="#四、自己瞎记的一些docker命令" class="headerlink" title="四、自己瞎记的一些docker命令"></a>四、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
+<h2 id="五、自己瞎记的一些docker命令"><a href="#五、自己瞎记的一些docker命令" class="headerlink" title="五、自己瞎记的一些docker命令"></a>五、自己瞎记的一些docker命令</h2><p>//ps.. docker删除的命令</p>
 <pre class=" language-shell"><code class="language-shell">docker rm `docker ps -a -q`        //docker删除所有容器
 
 docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
-<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><blockquote>
+<h2 id="六、nginx-80端口与frps中vhost端口冲突解决方案"><a href="#六、nginx-80端口与frps中vhost端口冲突解决方案" class="headerlink" title="六、nginx 80端口与frps中vhost端口冲突解决方案"></a>六、nginx 80端口与frps中vhost端口冲突解决方案</h2><p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306231104.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230729.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230801.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210306230850.png" srcset="/img/loading.gif" alt=""></p>
+<p>nginx配置如下：</p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">80</span><span class="token punctuation">;</span>
+    <span class="token keyword">server_name</span> <span class="token operator">*</span><span class="token punctuation">.</span>test<span class="token punctuation">.</span>sipcoj<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">#   return 301 https://$host$request_uri;</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">:</span><span class="token number">1234</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_redirect</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token variable">$host</span><span class="token operator">/</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token variable">$http_host</span><span class="token operator">/</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Forwarded<span class="token operator">-</span>For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><blockquote>
 <p>参考博客：</p>
 <p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
 <p><a href="https://hujiekang.top/2020/04/26/CTFd-conf/" target="_blank" rel="noopener">https://hujiekang.top/2020/04/26/CTFd-conf/</a></p>
 <p><a href="https://err0r.top/article/CTFD/" target="_blank" rel="noopener">https://err0r.top/article/CTFD/</a></p>
+<p><a href="https://www.ioiox.com/archives/98.html" target="_blank" rel="noopener">https://www.ioiox.com/archives/98.html</a></p>
 </blockquote>
 ]]></content>
       <categories>
         <category>docker</category>
         <category>CTFd</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2019]EasySQL</title>
-    <url>/ctf/2019-easysql/</url>
-    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
-<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
-</li>
-<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
-</li>
-<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
-</li>
-</ul>
-<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
-<p>1.sql_mode不为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
-<p>1.sql_mode为PIPES_AS_CONCAT</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>关于非预期解 : <code>*,1</code></li>
-<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
-<li>等同于 <code>select *,1 from Flag</code></li>
-</ul>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>ctf</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>new page</title>
-    <url>/binary/new-page/</url>
-    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
-<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
-<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
-<p>以后要慢慢开始记录自己学习成长的经历了</p>
-<p>也感谢一直陪在我身边鼓励我的朋友们</p>
-<p>Fighting！！</p>
-<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192420.jpg" srcset="/img/loading.gif" alt=""></p>
-]]></content>
-      <categories>
-        <category>binary</category>
       </categories>
   </entry>
   <entry>
@@ -192,6 +168,54 @@ volatility -f mem.raw --profile=Win7SP0x86 memdump -p 3552 --dump-dir=./</code><
       <categories>
         <category>ctf</category>
       </categories>
+  </entry>
+  <entry>
+    <title>2019]EasySQL</title>
+    <url>/ctf/2019-easysql/</url>
+    <content><![CDATA[<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><ul>
+<li><p>这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 <code>query</code> 长度不超过 40</p>
+</li>
+<li><p>关键的查询代码是 <code>select $post[&#39;query&#39;]||flag from Flag</code></p>
+</li>
+<li><p>这里要想办法使得||变为字符串连接操作符，来拼接sql命令</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192126.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<h5 id="PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。"><a href="#PIPES-AS-CONCAT-将-视为字符串的连接操作符而非-或-运算符，这和Oracle数据库是一样的，也和字符串的拼接函数-CONCAT-相类似。" class="headerlink" title="PIPES_AS_CONCAT 将 || 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。"></a><strong><code>PIPES_AS_CONCAT</code></strong> 将 <code>||</code> 视为字符串的连接操作符而非 或 运算符，这和Oracle数据库是一样的，也和字符串的拼接函数 CONCAT() 相类似。</h5><p>本地测试一下：</p>
+<p>1.sql_mode不为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192123.png" srcset="/img/loading.gif" alt=""></p>
+<p>1.sql_mode为PIPES_AS_CONCAT</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192124.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>关于非预期解 : <code>*,1</code></li>
+<li>拼接一下，不难理解 : <code>select *,1||flag from Flag</code></li>
+<li>等同于 <code>select *,1 from Flag</code></li>
+</ul>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192125.png" srcset="/img/loading.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>ctf</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>new page</title>
+    <url>/binary/new-page/</url>
+    <content><![CDATA[<h4 id="近况："><a href="#近况：" class="headerlink" title="近况："></a>近况：</h4><p>博客搭建好久了，但一直都没有好好整理过文章</p>
+<p>转专业考试结束了，应该可以顺利的进入信安专业学习</p>
+<p>今天换了hexo 的主题，感觉简单点看起来也更舒适一些吧</p>
+<p>以后要慢慢开始记录自己学习成长的经历了</p>
+<p>也感谢一直陪在我身边鼓励我的朋友们</p>
+<p>Fighting！！</p>
+<p><img src="https://gitee.com/mushiyu/img/raw/master/img/20210111192420.jpg" srcset="/img/loading.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>binary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>upload-labs</title>
+    <url>/uncategorized/upload-labs/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>DC靶场</title>
@@ -272,6 +296,25 @@ volatility -f mem.raw --profile<span class="token operator">=</span>Win7SP1x86 d
 ]]></content>
       <categories>
         <category>取证</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git命令</title>
+    <url>/git/git-ming-ling/</url>
+    <content><![CDATA[<h2 id="git命令复习"><a href="#git命令复习" class="headerlink" title="git命令复习"></a>git命令复习</h2><p><code>git status</code>        //查看当前状态</p>
+<p><code>git add .</code>    //将所有文件加到暂存区</p>
+<p><code>git commit -m &quot;完成了xx功能&quot;</code>    //将暂存区中的代码提交到本地仓库中</p>
+<p><code>git branch</code>            //查看分支情况，带*的为当前分支</p>
+<p><code>git checkout -b login</code>        //创建login分支</p>
+<h5 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h5><p><code>git checkout master</code>    //切换到master分支</p>
+<p><code>git merge login</code>        //    将login分支中的合并到主分支中</p>
+<h5 id="推送到远程仓库中"><a href="#推送到远程仓库中" class="headerlink" title="推送到远程仓库中"></a>推送到远程仓库中</h5><p><code>git push</code> </p>
+<h5 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h5><p><code>git checkout login</code></p>
+<p><code>git branch</code></p>
+<p><code>git push -u origin login</code>        //将本地的login子分支推送到云端origin仓储里并叫做login子分支</p>
+]]></content>
+      <categories>
+        <category>git</category>
       </categories>
   </entry>
   <entry>
