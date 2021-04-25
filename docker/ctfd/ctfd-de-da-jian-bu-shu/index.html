@@ -128,7 +128,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      748 字
+      970 字
     </span>
   
 
@@ -138,7 +138,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      15
        分钟
     </span>
   
@@ -256,6 +256,46 @@ docker rmi `docker images -q`    //docker删除所有镜像</code></pre>
         <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<p>4.25更新</p>
+<p>gevent问题，参考</p>
+<blockquote>
+<p><a href="http://blog.onecodeall.com/index/blog/detail/id/1552707981538537/tid/0" target="_blank" rel="noopener">http://blog.onecodeall.com/index/blog/detail/id/1552707981538537/tid/0</a></p>
+</blockquote>
+<p>Dockerfile文件如下：</p>
+<pre class=" language-dockerfile"><code class="language-dockerfile">FROM python:3.7-alpine
+WORKDIR /opt/CTFd
+RUN mkdir -p /opt/CTFd /var/log/CTFd /var/uploads
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirror.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN set -x \
+    && apk update \
+    && apk add --no-cache gcc \ 
+    && apk add --no-cache g++ \ 
+    && apk add --no-cache make \ 
+    && apk add --no-cache libffi-dev \ 
+    && apk add --no-cache openssl-dev \
+          && apk add --no-cache linux-headers \ 
+        && apk add --no-cache make \
+        &&apk add --no-cache musl-dev \
+        &&apk add --no-cache py-pip \
+        &&apk add --no-cache mysql-client \
+        &&apk add --no-cache git 
+
+COPY . /opt/CTFd
+
+RUN pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com --no-cache-dir -r requirements.txt
+RUN for d in CTFd/plugins/*; do \
+      if [ -f "$d/requirements.txt" ]; then \
+        pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r $d/requirements.txt; \
+      fi; \
+    done;
+
+RUN chmod +x /opt/CTFd/docker-entrypoint.sh
+RUN adduser -D -u 1001 -s /bin/sh ctfd
+RUN chown -R 1001:1001 /opt/CTFd /var/log/CTFd /var/uploads
+USER 1001
+EXPOSE 8000
+ENTRYPOINT ["/opt/CTFd/docker-entrypoint.sh"]</code></pre>
 <h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><blockquote>
 <p>参考博客：</p>
 <p><a href="https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp" target="_blank" rel="noopener">https://www.zhaoj.in/read-6333.html/comment-page-2#_Direct_Frp</a></p>
