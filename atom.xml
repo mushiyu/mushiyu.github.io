@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>The light</title>
+  
+  <subtitle>信安弱鸡@msy</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2022-09-09T16:42:57.538Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>mushiyu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git命令</title>
+    <link href="http://yoursite.com/git/git-ming-ling/"/>
+    <id>http://yoursite.com/git/git-ming-ling/</id>
+    <published>2021-01-25T08:45:10.000Z</published>
+    <updated>2022-09-09T16:42:57.538Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;git命令复习&quot;&gt;&lt;a href=&quot;#git命令复习&quot; class=&quot;headerlink&quot; title=&quot;git命令复习&quot;&gt;&lt;/a&gt;git命令复习&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git status&lt;/code&gt;       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://yoursite.com/categories/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CTFd的搭建部署</title>
+    <link href="http://yoursite.com/docker/ctfd/ctfd-de-da-jian-bu-shu/"/>
+    <id>http://yoursite.com/docker/ctfd/ctfd-de-da-jian-bu-shu/</id>
+    <published>2021-01-12T06:48:03.000Z</published>
+    <updated>2022-09-09T23:46:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/categories/docker/"/>
+    
+      <category term="CTFd" scheme="http://yoursite.com/categories/docker/CTFd/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>buu-misc</title>
+    <link href="http://yoursite.com/ctf/buu-misc/"/>
+    <id>http://yoursite.com/ctf/buu-misc/</id>
+    <published>2021-01-11T11:55:15.000Z</published>
+    <updated>2022-09-09T23:46:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;V-amp-N-2020-公开赛-MISC内存取证&quot;&gt;&lt;a href=&quot;#V-amp-N-2020-公开赛-MISC内存取证&quot; class=&quot;headerlink&quot; title=&quot;V&amp;amp;N 2020 公开赛-MISC内存取证&quot;&gt;&lt;/a&gt;V&amp;amp;N
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[2019]EasySQL</title>
+    <link href="http://yoursite.com/ctf/2019-easysql/"/>
+    <id>http://yoursite.com/ctf/2019-easysql/</id>
+    <published>2020-10-27T02:22:43.000Z</published>
+    <updated>2022-09-09T23:46:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;堆叠注入&quot;&gt;&lt;a href=&quot;#堆叠注入&quot; class=&quot;headerlink&quot; title=&quot;堆叠注入&quot;&gt;&lt;/a&gt;堆叠注入&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;这个和强网杯相似，都是堆叠注入，在公开的源码中可以看到，传入的 &lt;code&gt;query&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DC靶场</title>
+    <link href="http://yoursite.com/shen-tou-ce-shi/dc-ba-chang/"/>
+    <id>http://yoursite.com/shen-tou-ce-shi/dc-ba-chang/</id>
+    <published>2020-09-04T08:16:08.000Z</published>
+    <updated>2022-09-09T23:46:00.124Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点&quot;&gt;&lt;a href=&quot;#最近在练习VulnHubDC靶场，在这里记录下自己不太熟悉的一些知识点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>volatility使用</title>
+    <link href="http://yoursite.com/qu-zheng/volatility-shi-yong/"/>
+    <id>http://yoursite.com/qu-zheng/volatility-shi-yong/</id>
+    <published>2020-08-30T06:48:15.000Z</published>
+    <updated>2022-09-09T23:46:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h4 id=&quot;有一类题叫做内存取证题，简单了解有关内存取证的基本知识与命令&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="取证" scheme="http://yoursite.com/categories/%E5%8F%96%E8%AF%81/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第四届蓝帽杯线上赛部分wp</title>
+    <link href="http://yoursite.com/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/"/>
+    <id>http://yoursite.com/ctf/di-si-jie-lan-mao-bei-xian-shang-sai-bu-fen-wp/</id>
+    <published>2020-08-10T02:28:11.000Z</published>
+    <updated>2022-09-09T23:46:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp&quot;&gt;&lt;a href=&quot;#第四届“蓝帽杯”全国警校网络安全技能大赛WriteUp&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ctf" scheme="http://yoursite.com/categories/ctf/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>new page</title>
+    <link href="http://yoursite.com/binary/new-page/"/>
+    <id>http://yoursite.com/binary/new-page/</id>
+    <published>2020-08-09T13:11:53.000Z</published>
+    <updated>2022-09-09T23:46:00.323Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;近况：&quot;&gt;&lt;a href=&quot;#近况：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="binary" scheme="http://yoursite.com/categories/binary/"/>
+    
+    
+  </entry>
+  
+</feed>

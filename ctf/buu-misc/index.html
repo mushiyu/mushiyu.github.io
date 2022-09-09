@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="web安全爱好者">
+  <meta name="author" content="mushiyu">
+  <meta name="keywords" content="">
+  <title>buu-misc myblog - mmsyThe light</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="The light" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>The light</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/5.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2021-01-11 19:55">
+      2021年1月11日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      738 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="V-amp-N-2020-公开赛-MISC内存取证"><a href="#V-amp-N-2020-公开赛-MISC内存取证" class="headerlink" title="V&amp;N 2020 公开赛-MISC内存取证"></a>V&amp;N 2020 公开赛-MISC内存取证</h1><p>这是当时Gality师傅发来的一道题，当时没有做出来，相当于赛后复现吧，感觉这个题还是蛮有价值的</p>
+<blockquote>
+<p>附件链接：<a href="https://pan.baidu.com/s/1F-44z1lFPXjN_o4Y4VcC9A" target="_blank" rel="noopener">https://pan.baidu.com/s/1F-44z1lFPXjN_o4Y4VcC9A</a><br>提取码：3i9m </p>
+</blockquote>
+<p>借鉴一位师傅的题目思路：</p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111201409.png" srcset="/img/loading.gif" alt=""></p>
+<p>确定内存镜像版本</p>
+<pre class=" language-shell"><code class="language-shell">volatility -f mem.raw imageinfo</code></pre>
+<p>判断进程，同类型的命令还有pstree和psscan</p>
+<pre class=" language-shell"><code class="language-shell">volatility -f mem.raw --profile=Win7SP0x86 pslist</code></pre>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111201323.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>发现三个可疑进程</p>
+<p>全部导出</p>
+<pre class=" language-shell"><code class="language-shell">volatility -f mem.raw --profile=Win7SP0x86 memdump -p 2648 --dump-dir=./
+
+volatility -f mem.raw --profile=Win7SP0x86 memdump -p 3364 --dump-dir=./
+
+volatility -f mem.raw --profile=Win7SP0x86 memdump -p 3552 --dump-dir=./</code></pre>
+<h2 id="一、mspaint-exe-pid-2648"><a href="#一、mspaint-exe-pid-2648" class="headerlink" title="一、mspaint.exe (pid 2648)"></a>一、mspaint.exe (pid 2648)</h2><blockquote>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000018813033?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018813033?utm_source=tag-newest</a></p>
+</blockquote>
+<p>随机给<strong>位移、宽度</strong>（可以先从常见的分辨率选择，建议<strong>1440</strong>）、<strong>高度</strong>调整一点数据，让有图像显示，哪怕是乱码，然后调整<strong>高度</strong></p>
+<p>固定宽度之后调整<strong>位移</strong>，位移可以直接大范围拖动进度条进行粗略调整（右边上下两个小箭头长按微调是调整图像左右，粗略进度条是调整图像上下）</p>
+<p>然后你就可能会看到下图的样子，有像是字符的存在，此时<strong>调整好左右</strong>就不要动了，<strong>开始调整宽度</strong></p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111201823.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>同样也是调整右边的上下箭头，对<strong>宽度</strong>进行微调（宽度不要用进度条调整，数据太快了看不清，一般不会太大。鼠标一直点击上下箭头可以快速调整）</p>
+<p>调整过程中你可能会看到字符飞快地变形，从原来的斜着的逐渐立起来</p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111201846.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>使用ps垂直翻转</p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111201902.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>得出密码</p>
+<pre class=" language-shell"><code class="language-shell">1YxfCQ6goYBD6Q</code></pre>
+<h2 id="二、-notepad-exe-pid-3552"><a href="#二、-notepad-exe-pid-3552" class="headerlink" title="二、 notepad.exe (pid 3552)"></a>二、 notepad.exe (pid 3552)</h2><p>根据volatility 帮助文档，editbox插件可以显示有关编辑控件的信息。notepad插件是只能在对windows xp镜像分析中进行使用，editbox很好的替代了它的功能</p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202033.jpg" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>据说原始网盘链接已经过期了，补链接：</p>
+<p>链接：<a href="https://pan.baidu.com/s/14aqByt4prda3WuFMhTE70g" target="_blank" rel="noopener">https://pan.baidu.com/s/14aqByt4prda3WuFMhTE70g</a><br>提取码：m19h </p>
+</blockquote>
+<p>法二，通过strings提取，这种如果事先知道字符串，可以快一些</p>
+<pre class=" language-shell"><code class="language-shell">strings -e l ./notepad.dmp </code></pre>
+<blockquote>
+<p><em>-e –encoding = {s，S，b，l，B，L}选择字符大小和字节顺序：</em><br><em>s = 7位，S = 8位，{b，l} = 16位，{B，L} = 32位</em></p>
+</blockquote>
+<p>内容很多，所以我们用grep筛选一下，关键词是<code>pan</code>，我们无法确定网盘提取码在第几行，所以我们规定输出<code>pan</code>字符串的上下5行,把输出内容输入到文档notepad.txt里</p>
+<pre class=" language-shell"><code class="language-shell">strings -e l ./notepad.dmp | grep "pan" -B 5 -A 5 > notepad.txt</code></pre>
+<h2 id="三、TrueCrypt-exe-pid-3364"><a href="#三、TrueCrypt-exe-pid-3364" class="headerlink" title="三、TrueCrypt.exe (pid 3364)"></a>三、TrueCrypt.exe (pid 3364)</h2><blockquote>
+<p>参考：<a href="https://blog.xiafeng2333.top/ctf-11/" target="_blank" rel="noopener">https://blog.xiafeng2333.top/ctf-11/</a></p>
+</blockquote>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202518.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202523.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202529.jpg" srcset="/img/loading.gif" alt=""></p>
+<pre class=" language-shell"><code class="language-shell">uOjFdKu1jsbWI8N51jsbWI8N5</code></pre>
+<p>然后使用TrueCrypt或者VeraCrypt对<strong>VOL</strong>进行正常的解密</p>
+<blockquote>
+<p>参考  <a href="https://blog.51cto.com/linhong/2406226" target="_blank" rel="noopener">https://blog.51cto.com/linhong/2406226</a></p>
+</blockquote>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202637.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://mmsyblog-img.oss-cn-beijing.aliyuncs.com/img/20210111202734.jpg" srcset="/img/loading.gif" alt=""></p>
+<pre><code>RoarCTF{wm_D0uB1e_TC-cRypt}</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/docker/ctfd/ctfd-de-da-jian-bu-shu/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CTFd的搭建部署</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/ctf/2019-easysql/">
+                        <span class="hidden-mobile">[2019]EasySQL</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+      <br>
+      <!-- <a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="/img/youpaiyun.png" width="69px" height="30px"></a><span>  提供加速服务</span> -->
+
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    
+      <script  src="/js/lazyload.js" ></script>
+    
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "buu-misc&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="140,140,140" opacity='0.7' zIndex="-2" count="500" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
